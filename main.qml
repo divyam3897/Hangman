@@ -46,7 +46,7 @@ Window
         id:wordImage
         width:Window.width
         height:Window.height
-        source:"../snowman-wallpaper-1.jpg"
+        source:"snowman-wallpaper-1.jpg"
         opacity:1
     }
    Rectangle
