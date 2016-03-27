@@ -26,7 +26,7 @@ Window
     anchors.fill: rec1
     anchors.centerIn: rec1
     maximumLength: 1
-    font.pixelSize: (rec1.height*rec1.width)/80
+    font.pixelSize: rec1.height/1.2
     font.bold:true
     font.capitalization: Font.AllUppercase
     Keys.onSpacePressed:
@@ -64,11 +64,6 @@ console.log(wordToFind);
    text:Mathfunction.blanksFromAnswer(wordToFind)
 
 }
-  TextInput{
-      anchors.centerIn: parent
-      font.pixelSize: 20
-      onFocusChanged:  {
-      text=Mathfunction.answer(text1.text,shown,wordToFind)
-    }}
-}
+  }
+
 
