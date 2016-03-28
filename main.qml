@@ -5,7 +5,7 @@ Window
     {
      visible: true
      property string wordToFind:Mathfunction.chooseWord()
-
+     property string res: Mathfunction.blanksFromAnswer(wordToFind)
    Image{
         id:wordImage
         width:Window.width
@@ -29,20 +29,19 @@ Window
     font.pixelSize: rec1.height/1.2
     font.bold:true
     font.capitalization: Font.AllUppercase
-    Keys.onSpacePressed:
-    {        chooseWord()
-console.log(wordToFind);
+    Keys.onSpacePressed:{
+           Mathfunction.chooseWord()
+          console.log(wordToFind);
     }
-    onAccepted:
-       {
-        text:Mathfunction.answer(text1.text,Mathfunction.blanksFromAnswer(wordToFind),wordToFind)
-        wordImage.opacity=wordImage.opacity - 0.1
+    onAccepted:{
+        text:Mathfunction.answer(text1.text,res,wordToFind)
+        if(wordToFind.indexOf(text1.text)==-1){
+        wordImage.opacity=wordImage.opacity - 0.2
        }
+
     }
-
-
-        Text
-      {
+    }
+     Text{
       text:"Guesses"
      color:'red'
      anchors.left: rec1.right
@@ -55,15 +54,21 @@ console.log(wordToFind);
      duration: 100
    }
        }
+    Text{
+      id:text3
+      anchors.centerIn: parent
+      font.pixelSize: 20
+      text:res
+     }
+    Text{
+        anchors.centerIn: parent
+        font.pixelSize: 20
+       text: if(res.indexOf("_")==-1){
+                 text3.text="CONGRATULATIONS!! Correct Answer"
+              }
+             }
+    }
 
 
-  Text
-    {
-   anchors.centerIn: parent
-   font.pixelSize: 20
-   text:Mathfunction.blanksFromAnswer(wordToFind)
-
-}
-  }
 
 
